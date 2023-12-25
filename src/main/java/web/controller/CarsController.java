@@ -14,8 +14,12 @@ import java.util.List;
 @Controller
 public class CarsController {
 
+    private final CarService carService;
+
     @Autowired
-    private CarService carService;
+    public CarsController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping(value = "/cars")
     public String getCars(@RequestParam(name = "count", defaultValue = "5") int count, ModelMap model) {
@@ -23,7 +27,7 @@ public class CarsController {
 
         List<String> messages = new ArrayList<>();
         for (Car car : cars) {
-            messages.add(String.valueOf(car));
+            messages.add(car.toString());
         }
         model.addAttribute("messages", messages);
         return "cars";
