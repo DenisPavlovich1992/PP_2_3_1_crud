@@ -22,11 +22,11 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
 @ComponentScan(value = "web")
-public class dbConfig {
+public class DataBaseConfig {
 
     private final Environment env;
 
-    public dbConfig(Environment env) {
+    public DataBaseConfig(Environment env) {
         this.env = env;
     }
 
